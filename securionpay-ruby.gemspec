@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'securionpay/ruby/version'
+require 'securionpay/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "securionpay-ruby"
-  spec.version       = Securionpay::Ruby::VERSION
+  spec.version       = Securionpay::VERSION
   spec.authors       = ["Grzegorz Wilczynski"]
   spec.email         = ["support@securionpay.com"]
 
