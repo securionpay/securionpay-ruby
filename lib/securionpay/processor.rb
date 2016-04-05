@@ -26,19 +26,11 @@ module Securionpay
     end
 
     def request_builder
-      @request_builder ||= Builders::RequestBuilder.new(
-        transaction_manager
-      )
+      @request_builder ||= Builders::RequestBuilder.new
     end
 
     def response_parser
-      @response_parser ||= Parsers::ResponseParser.new(
-        transaction_manager
-      )
-    end
-
-    def transaction_manager
-      @transaction_manager ||= Transaction::Manager.new
+      @response_parser ||= Parsers::ResponseParser.new
     end
   end
 end

@@ -1,4 +1,5 @@
 module Securionpay
+  # Http communicator
   class Communicator
     attr_reader :web_consumer, :service_url, :user_name
     private :web_consumer, :service_url, :user_name
@@ -10,19 +11,22 @@ module Securionpay
     end
 
     def send_receive(request)
-      case request.method
+      request_method = request.method
+      url = url(request.path)
+
+      case request_method
       when :get
         web_consumer.get(
-          url(request.path),
-          request(request.body)
+          url,
+          request_body
         )
       when :post
         web_consumer.post(
-          url(request.path),
-          request(request.body)
+          url,
+          request_body(request.body)
         )
       else
-        raise ArgumentError, "Method: '#{request.method}' is not supported yet."
+        raise ArgumentError, "Method: '#{request_method}' is not supported yet."
       end
     end
 
@@ -32,7 +36,7 @@ module Securionpay
       "#{service_url}/#{path}"
     end
 
-    def request(body)
+    def request_body(body = nil)
       {
         body: body,
         basic_auth: basic_auth

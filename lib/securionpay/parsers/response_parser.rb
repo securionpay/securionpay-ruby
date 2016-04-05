@@ -1,18 +1,18 @@
 module Securionpay
   module Parsers
+    # Parse response
     class ResponseParser
-      attr_reader :transaction_manager
-      private :transaction_manager
-
-      def initialize(transaction_manager)
-        @transaction_manager = transaction_manager
-      end
-
       def parse(request, response)
         method = Utils.response_method_name(request)
         payload = transaction_manager.send(method, response)
 
         Response.new(payload)
+      end
+
+      private
+
+      def transaction_manager
+        Transaction::Manager
       end
     end
   end

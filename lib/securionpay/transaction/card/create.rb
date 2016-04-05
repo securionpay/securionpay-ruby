@@ -1,6 +1,7 @@
 module Securionpay
   module Transaction
     module Card
+      # Prepare request for create transation
       class Create
         def self.request(card)
           path = "customers/#{card.customer_id}/cards"
