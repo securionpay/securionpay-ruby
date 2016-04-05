@@ -9,11 +9,21 @@ module Securionpay
       @user_name = user_name
     end
 
-    def send_receive(path, body)
-      web_consumer.post(
-        url(path),
-        request(body)
-      )
+    def send_receive(request)
+      case request.method
+      when :get
+        web_consumer.get(
+          url(request.path),
+          request(request.body)
+        )
+      when :post
+        web_consumer.post(
+          url(request.path),
+          request(request.body)
+        )
+      else
+        raise ArgumentError, "Method: '#{request.method}' is not supported yet."
+      end
     end
 
     private

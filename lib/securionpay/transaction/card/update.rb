@@ -1,7 +1,7 @@
 module Securionpay
-  module Transactions
+  module Transaction
     module Card
-      class Retrieve
+      class Update
       end
     end
   end

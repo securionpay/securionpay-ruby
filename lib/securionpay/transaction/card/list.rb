@@ -1,5 +1,5 @@
 module Securionpay
-  module Transactions
+  module Transaction
     module Card
       class List
       end
