@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/gwilczynski/securionpay-ruby.svg?branch=master)](https://travis-ci.org/gwilczynski/securionpay-ruby)
 [![Code Climate](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/gpa.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby)
 [![Test Coverage](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/coverage.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby/coverage)
+[![Issue Count](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/issue_count.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby)
 
 If you don't already have SecurionPay account you can create it [here](https://securionpay.com/register).
 
@@ -11,7 +12,7 @@ If you don't already have SecurionPay account you can create it [here](https://s
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'securionpay-ruby'
+gem 'securionpay'
 ```
 
 And then execute:
@@ -20,11 +21,28 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install securionpay-ruby
+    $ gem install securionpay
 
 ## Usage
 
-TODO: Write usage instructions here
+Example:
+
+```ruby
+configuration = Securionpay::Configuration.new(secret_key)
+processor = Securionpay::Processor.new(configuration)
+
+card = Securionpay::Models::Card.new.tap do |card|
+  card.id = 'card_id'
+  card.customer_id = 'cust_id'
+end
+
+request = Securionpay::Request.new.tap do |request|
+  request.type = :retrieve
+  request.payload = card
+end
+
+processor.process(request)
+```
 
 ## Development
 
