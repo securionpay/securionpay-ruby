@@ -9,6 +9,8 @@ module Securionpay
       :id,
       :created,
       :object_type,
+      :number,
+      :cvc,
       :first6,
       :last4,
       :fingerprint,
@@ -25,6 +27,12 @@ module Securionpay
       :address_line_1,
       :address_line_2,
       :fraud_check_data
-    )
+    ) do
+      def initialize(*)
+        super
+
+        self.object_type = 'card'.freeze
+      end
+    end
   end
 end
