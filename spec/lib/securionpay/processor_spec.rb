@@ -6,6 +6,7 @@ describe Securionpay::Processor do
   end
 
   it 'to do' do
+    # TODO
     expect(true).to be_truthy
   end
 end
