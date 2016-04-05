@@ -12,7 +12,10 @@ describe Securionpay::Utils do
     described_class
   end
 
-  shared_examples_for 'method_name' do |parameter|
+  shared_examples_for 'payload_name' do |parameter|
+    let(:payload) { parameter[:payload] }
+    let(:transaction_type) { parameter[:transaction_type] }
+
     it 'gets method name' do
       expect(
         subject.request_method_name(request)
@@ -24,51 +27,37 @@ describe Securionpay::Utils do
     end
   end
 
-  context 'card as payload' do
-    let(:payload) { Securionpay::Models::Card.new }
+  describe 'method name builder' do
+    it_behaves_like(
+      'payload_name',
+      payload: Securionpay::Models::Card.new,
+      transaction_type: :create,
+      request_method_name: 'card_create_request',
+      response_method_name: 'card_create_response'
+    )
 
-    context 'transaction type create' do
-      let(:transaction_type) { :create }
+    it_behaves_like(
+      'payload_name',
+      payload: Securionpay::Models::Card.new,
+      transaction_type: :retrieve,
+      request_method_name: 'card_retrieve_request',
+      response_method_name: 'card_retrieve_response'
+    )
 
-      it_behaves_like(
-        'method_name',
-        request_method_name: 'card_create_request',
-        response_method_name: 'card_create_response'
-      )
-    end
+    it_behaves_like(
+      'payload_name',
+      payload: Securionpay::Models::Customer.new,
+      transaction_type: :create,
+      request_method_name: 'customer_create_request',
+      response_method_name: 'customer_create_response'
+    )
 
-    context 'transaction type retrieve' do
-      let(:transaction_type) { :retrieve }
-
-      it_behaves_like(
-        'method_name',
-        request_method_name: 'card_retrieve_request',
-        response_method_name: 'card_retrieve_response'
-      )
-    end
-  end
-
-  context 'customer as payload' do
-    let(:payload) { Securionpay::Models::Customer.new }
-
-    context 'transaction type create' do
-      let(:transaction_type) { :create }
-
-      it_behaves_like(
-        'method_name',
-        request_method_name: 'customer_create_request',
-        response_method_name: 'customer_create_response'
-      )
-    end
-
-    context 'transaction type retrieve' do
-      let(:transaction_type) { :retrieve }
-
-      it_behaves_like(
-        'method_name',
-        request_method_name: 'customer_retrieve_request',
-        response_method_name: 'customer_retrieve_response'
-      )
-    end
+    it_behaves_like(
+      'payload_name',
+      payload: Securionpay::Models::Customer.new,
+      transaction_type: :retrieve,
+      request_method_name: 'customer_retrieve_request',
+      response_method_name: 'customer_retrieve_response'
+    )
   end
 end
