@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'securionpay/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "securionpay-ruby"
+  spec.name          = "securionpay"
   spec.version       = Securionpay::VERSION
   spec.authors       = ["Grzegorz Wilczynski"]
   spec.email         = ["support@securionpay.com"]
@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "rspec", "~> 3.4"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 0.5"
 end
