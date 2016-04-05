@@ -12,17 +12,15 @@ describe Securionpay::Utils do
     described_class
   end
 
-  shared_examples_for 'request_method_name' do |parameter|
+  shared_examples_for 'method_name' do |parameter|
     it 'gets method name' do
-      result = subject.request_method_name(request)
-      expect(result).to eq(parameter[:method_name])
-    end
-  end
+      expect(
+        subject.request_method_name(request)
+      ).to eq(parameter[:request_method_name])
 
-  shared_examples_for 'response_method_name' do |parameter|
-    it 'gets method name' do
-      result = subject.response_method_name(request)
-      expect(result).to eq(parameter[:method_name])
+      expect(
+        subject.response_method_name(request)
+      ).to eq(parameter[:response_method_name])
     end
   end
 
@@ -32,25 +30,21 @@ describe Securionpay::Utils do
     context 'transaction type create' do
       let(:transaction_type) { :create }
 
-      describe '.request_method_name' do
-        it_behaves_like 'request_method_name', method_name: 'card_create_request'
-      end
-
-      describe '.response_method_name' do
-        it_behaves_like 'response_method_name', method_name: 'card_create_response'
-      end
+      it_behaves_like(
+        'method_name',
+        request_method_name: 'card_create_request',
+        response_method_name: 'card_create_response'
+      )
     end
 
     context 'transaction type retrieve' do
       let(:transaction_type) { :retrieve }
 
-      describe '.request_method_name' do
-        it_behaves_like 'request_method_name', method_name: 'card_retrieve_request'
-      end
-
-      describe '.response_method_name' do
-        it_behaves_like 'response_method_name', method_name: 'card_retrieve_response'
-      end
+      it_behaves_like(
+        'method_name',
+        request_method_name: 'card_retrieve_request',
+        response_method_name: 'card_retrieve_response'
+      )
     end
   end
 
@@ -60,25 +54,21 @@ describe Securionpay::Utils do
     context 'transaction type create' do
       let(:transaction_type) { :create }
 
-      describe '.request_method_name' do
-        it_behaves_like 'request_method_name', method_name: 'customer_create_request'
-      end
-
-      describe '.response_method_name' do
-        it_behaves_like 'response_method_name', method_name: 'customer_create_response'
-      end
+      it_behaves_like(
+        'method_name',
+        request_method_name: 'customer_create_request',
+        response_method_name: 'customer_create_response'
+      )
     end
 
     context 'transaction type retrieve' do
       let(:transaction_type) { :retrieve }
 
-      describe '.request_method_name' do
-        it_behaves_like 'request_method_name', method_name: 'customer_retrieve_request'
-      end
-
-      describe '.response_method_name' do
-        it_behaves_like 'response_method_name', method_name: 'customer_retrieve_response'
-      end
+      it_behaves_like(
+        'method_name',
+        request_method_name: 'customer_retrieve_request',
+        response_method_name: 'customer_retrieve_response'
+      )
     end
   end
 end
