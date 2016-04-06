@@ -4,8 +4,11 @@ module Securionpay
     attr_reader :configuration
     private :configuration
 
-    def initialize(configuration)
+    def initialize(configuration, dependencies = {})
       @configuration = configuration
+      @communicator = dependencies[:communicator]
+      @request_builder = dependencies[:request_builder]
+      @response_parser = dependencies[:response_parser]
     end
 
     def process(request)
@@ -18,7 +21,7 @@ module Securionpay
     private
 
     def communicator
-      @communicator ||= Communicator.new(
+      @communicator || Communicator.new(
         HTTParty,
         configuration.service_url,
         configuration.secret_key
@@ -26,11 +29,11 @@ module Securionpay
     end
 
     def request_builder
-      @request_builder ||= Builders::RequestBuilder.new
+      @request_builder || Builders::RequestBuilder.new
     end
 
     def response_parser
-      @response_parser ||= Parsers::ResponseParser.new
+      @response_parser || Parsers::ResponseParser.new
     end
   end
 end

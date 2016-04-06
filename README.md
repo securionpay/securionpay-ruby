@@ -4,6 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/gpa.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby)
 [![Test Coverage](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/coverage.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby/coverage)
 [![Issue Count](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/issue_count.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby)
+[![Dependency Status](https://gemnasium.com/badges/github.com/gwilczynski/securionpay-ruby.svg)](https://gemnasium.com/github.com/gwilczynski/securionpay-ruby)
 
 If you don't already have SecurionPay account you can create it [here](https://securionpay.com/register).
 
