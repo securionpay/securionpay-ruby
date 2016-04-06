@@ -2,11 +2,11 @@ module Securionpay
   module Models
     # Additional data used for fraud protection
     FraudCheckData = Struct.new(
-      :ipAddress,
-      :ipCountry,
+      :ip_address,
+      :ip_country,
       :email,
-      :userAgent,
-      :acceptLanguage
+      :user_agent,
+      :accept_language
     )
   end
 end
