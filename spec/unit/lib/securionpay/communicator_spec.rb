@@ -5,13 +5,13 @@ describe SecurionPay::Communicator do
   let(:path) { 'some_path' }
   let(:body) { double }
   let(:web_consumer) { double }
-  let(:private_key) { double }
+  let(:secret_key) { double }
   let(:response) { double }
   let(:post_request_body) do
     {
       body: body,
       basic_auth: {
-        username: private_key
+        username: secret_key
       }
     }
   end
@@ -19,7 +19,7 @@ describe SecurionPay::Communicator do
     {
       body: nil,
       basic_auth: {
-        username: private_key
+        username: secret_key
       }
     }
   end
@@ -32,7 +32,7 @@ describe SecurionPay::Communicator do
 
   before do
     subject.web_consumer = web_consumer
-    SecurionPay::Configuration.private_key = private_key
+    SecurionPay::Configuration.secret_key = secret_key
     SecurionPay::Configuration.service_url = service_url
   end
 

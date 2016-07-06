@@ -38,7 +38,7 @@ $ bundle exec rake spec:unit
 Integration tests:
 
 ```bash
-$ CUSTOMER_ID='cust_id' PRIVATE_KEY='pr_test_id' bundle exec rake spec:integration
+$ SECRET_KEY='pr_test_id' bundle exec rake spec:integration
 ```
 
 Mutation tests:
@@ -52,7 +52,7 @@ $ SPEC_OPTS="--pattern spec/unit/**/*_spec.rb" bundle exec mutant --include lib 
 Configuration:
 
 ```ruby
-SecurionPay::Configuration.private_key = 'pr_test_id'
+SecurionPay::Configuration.secret_key = 'pr_test_id'
 ```
 
 If you want connect do different backent:

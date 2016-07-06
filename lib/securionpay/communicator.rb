@@ -28,7 +28,7 @@ module SecurionPay
       {
         body: body,
         basic_auth: {
-          username: Configuration.private_key
+          username: Configuration.secret_key
         }
       }
     end

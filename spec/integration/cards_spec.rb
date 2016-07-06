@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SecurionPay::Cards do
   before do
-    SecurionPay::Configuration.private_key = ENV['PRIVATE_KEY']
+    SecurionPay::Configuration.secret_key = ENV['SECRET_KEY']
   end
 
   it 'create and retrieve credit card' do
