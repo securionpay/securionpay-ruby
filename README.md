@@ -55,7 +55,7 @@ Configuration:
 SecurionPay::Configuration.secret_key = 'pr_test_id'
 ```
 
-If you want connect do different backent:
+If you want connect do different backend:
 
 ```ruby
 SecurionPay::Configuration.service_url = 'https://api.chuck.norris.com'
@@ -148,6 +148,53 @@ SecurionPay::Blacklist.delete(blacklist_rule_id)
 
 ```ruby
 SecurionPay::Blacklist.list
+```
+
+### Create a new Subscription
+Creates a new subscription object.
+
+```ruby
+customer_id = 'cust_id'
+plan = {
+  planId: 'some_plan_id',
+}
+
+SecurionPay::Subscriptions.create(customer_id, plan)
+```
+
+### Retrieve an existing Subscription
+
+Retrieve an existing subscription object.
+
+```ruby
+customer_id = 'cust_id'
+subscription_id = 'subscription_id'
+
+SecurionPay::Subscriptions.retrieve(customer_id, subscription_id)
+```
+
+### Update an existing Subscription
+
+Update an existing subscription object.
+
+```ruby
+customer_id = 'cust_id'
+subscription_id = 'subscription_id'
+plan = {
+  planId: 'some_new_plan_id',
+}
+SecurionPay::Subscriptions.update(customer_id, subscription_id, plan)
+```
+
+### Delete an existing Subscription
+
+Delete an existing subscription object.
+
+```ruby
+customer_id = 'cust_id'
+subscription_id = 'subscription_id'
+
+SecurionPay::Subscriptions.delete(customer_id, subscription_id)
 ```
 
 ## Development
