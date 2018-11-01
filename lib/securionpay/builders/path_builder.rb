@@ -25,6 +25,14 @@ module SecurionPay
         end
       end
 
+      def self.build_plans_path(plan_id = nil)
+        if plan_id
+          "/plans/#{plan_id}"
+        else
+          "/plans"
+        end
+      end
+
       def self.build_blacklist_path(blacklist_rule_id = nil)
         if blacklist_rule_id
           "/blacklist/#{blacklist_rule_id}"

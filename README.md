@@ -197,6 +197,54 @@ subscription_id = 'subscription_id'
 SecurionPay::Subscriptions.delete(customer_id, subscription_id)
 ```
 
+### Create a new Plan
+Creates a new plan object.
+
+```ruby
+plan = {
+  amount: 499,
+  currency: 'EUR', # three-letter ISO currency code.
+  interval: 'day',  # Possible values are: hour, day, week, month, year
+  intervalCount: 10, # optional (default is 1)
+  name: "Example plan"
+}
+
+SecurionPay::Plans.create(plan)
+```
+
+### Retrieve an existing Plan
+
+Retrieve an existing plan object.
+
+```ruby
+plan_id = 'plan_id'
+
+SecurionPay::Plans.retrieve(plan_id)
+```
+
+### Update an existing Plan
+
+Update an existing plan object.
+
+```ruby
+plan_id = 'plan_id'
+plan = {
+    amount: 799,
+    currency: 'USD',
+}
+SecurionPay::Plans.update(plan_id, plan)
+```
+
+### Delete an existing Plan
+
+Delete an existing plan object.
+
+```ruby
+plan_id = 'plan_id'
+
+SecurionPay::Plans.delete(plan_id)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
