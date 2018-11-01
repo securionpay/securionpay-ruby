@@ -17,6 +17,14 @@ module SecurionPay
         end
       end
 
+      def self.build_subscriptions_path(customer_id, subscription_id = nil)
+        if subscription_id
+          "/customers/#{customer_id}/subscriptions/#{subscription_id}"
+        else
+          "/customers/#{customer_id}/subscriptions"
+        end
+      end
+
       def self.build_blacklist_path(blacklist_rule_id = nil)
         if blacklist_rule_id
           "/blacklist/#{blacklist_rule_id}"

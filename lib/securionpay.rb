@@ -7,6 +7,7 @@ require 'securionpay/configuration'
 require 'securionpay/cross_sale_offers'
 require 'securionpay/customer_records'
 require 'securionpay/customers'
+require 'securionpay/subscriptions'
 require 'securionpay/version'
 
 require 'securionpay/builders/path_builder'
