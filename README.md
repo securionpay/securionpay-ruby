@@ -1,11 +1,7 @@
 # SecurionPay ruby gem
 
+[![Build](https://github.com/securionpay/securionpay-ruby/actions/workflows/build.yml/badge.svg)](https://github.com/securionpay/securionpay-ruby/actions/workflows/build.yml)
 [![Gem Version](https://badge.fury.io/rb/securionpay.svg)](https://badge.fury.io/rb/securionpay)
-[![Build Status](https://travis-ci.org/gwilczynski/securionpay-ruby.svg?branch=master)](https://travis-ci.org/gwilczynski/securionpay-ruby)
-[![Code Climate](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/gpa.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby)
-[![Test Coverage](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/coverage.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby/coverage)
-[![Issue Count](https://codeclimate.com/github/gwilczynski/securionpay-ruby/badges/issue_count.svg)](https://codeclimate.com/github/gwilczynski/securionpay-ruby)
-[![Dependency Status](https://gemnasium.com/badges/github.com/gwilczynski/securionpay-ruby.svg)](https://gemnasium.com/github.com/gwilczynski/securionpay-ruby)
 
 If you don't already have SecurionPay account you can create it [here](https://securionpay.com/register).
 
@@ -55,7 +51,7 @@ Configuration:
 SecurionPay::Configuration.secret_key = 'pr_test_id'
 ```
 
-If you want connect do different backent:
+If you want connect to different backend:
 
 ```ruby
 SecurionPay::Configuration.service_url = 'https://api.chuck.norris.com'
@@ -159,3 +155,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/securionpay/securionpay-ruby
+
+## Publish
+
+* Change version in `lib/securionpay/version.rb` to X.X.X and commit
+* Add `vX.X.X` tag to the commit
+* Create GitHub release on this tag (will trigger publish action)
