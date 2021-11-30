@@ -14,7 +14,7 @@ describe SecurionPay::Cards do
     card = SecurionPay::Cards.create(customer['id'], {
       number: '4242424242424242',
       expMonth: '12',
-      expYear: '2020',
+      expYear: Time.new.year,
       cvc: '123',
       cardholderName: cardholder_name
     })
@@ -22,7 +22,7 @@ describe SecurionPay::Cards do
     card = SecurionPay::Cards.retrieve(card['customerId'], card['id'])
     expect(card['last4']).to eq('4242')
     expect(card['expMonth']).to eq('12')
-    expect(card['expYear']).to eq('2020')
+    expect(card['expYear']).to eq(Time.new.year.to_s)
     expect(card['cardholderName']).to eq(cardholder_name)
   end
 end

@@ -2,14 +2,12 @@ PATH
   remote: .
   specs:
     securionpay (0.3.0)
-      httparty (~> 0.13)
+      httparty (~> 0.20)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    codeclimate-test-reporter (0.6.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.3)
     diff-lcs (1.4.4)
     docile (1.4.0)
@@ -35,7 +33,7 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    rake (11.3.0)
+    rake (13.0.6)
     regexp_parser (2.1.1)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -65,13 +63,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.11)
-  codeclimate-test-reporter (~> 0.5)
-  mutant-rspec (~> 0.8)
-  pry (~> 0.10)
-  rake (~> 11.1)
-  rspec (~> 3.4)
+  bundler (~> 2.2)
+  mutant-rspec (~> 0.11)
+  pry (~> 0.14)
+  rake (~> 13.0)
+  rspec (~> 3.10)
   securionpay!
+  simplecov (~> 0.21)
 
 BUNDLED WITH
-   1.17.3
+   2.2.26

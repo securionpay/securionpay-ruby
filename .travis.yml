@@ -1,10 +1,10 @@
 language: ruby
 rvm:
-  - 2.1.9
-  - 2.2.5
-  - 2.3.1
-before_install: gem install bundler -v 1.11.2
-script: bundle exec rake spec:unit
-addons:
-  code_climate:
-    repo_token: 9e10e5375f827b391dd6360f98a949ff799ecfa0f0ab730ba590193116953842
+  - 2.6.9
+  - 2.7.5
+  - 3.0.3
+  - 3.1.0-preview1
+before_install: gem install https://github.com/securionpay/securionpay-rubybundler -v 2.2.26
+script: |
+  bundle exec rake spec:unit
+  bundle exec rake spec:integration
