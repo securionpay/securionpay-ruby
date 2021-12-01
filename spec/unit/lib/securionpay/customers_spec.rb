@@ -4,12 +4,9 @@ describe SecurionPay::Customers do
   let(:customer_id) { 'some_customer_id' }
   let(:params) { double }
   let(:communicator) { double }
-  let(:path_builder) { double }
 
   let(:response) { double }
   let(:path) { double }
-  let(:path_builder_receive) { :build_customers_path }
-  let(:path_builder_with) { customer_id }
   let(:subject_send_with) { customer_id }
   let(:communicator_with) { params }
 
@@ -19,14 +16,12 @@ describe SecurionPay::Customers do
 
   before do 
     subject.communicator = communicator
-    subject.path_builder = path_builder
   end
 
   describe '.create' do
     let(:http_method) { :post }
     let(:method) { :create }
     let(:subject_send_with) { params }
-    let(:path_builder_with) { nil }
     it_behaves_like 'call_communicator'
   end
 
@@ -47,7 +42,6 @@ describe SecurionPay::Customers do
   describe '.delete' do
     let(:http_method) { :delete }
     let(:method) { :delete }
-    let(:path_builder_with) { customer_id }
     let(:subject_send_with) { customer_id }
     let(:communicator_with) { nil }
     it_behaves_like 'call_communicator'
@@ -56,7 +50,6 @@ describe SecurionPay::Customers do
   describe '.list' do
     let(:http_method) { :get }
     let(:method) { :list }
-    let(:path_builder_with) { nil }
     let(:subject_send_with) { nil }
     let(:communicator_with) { nil }
     it_behaves_like 'call_communicator'

@@ -1,15 +1,5 @@
 shared_examples_for 'call_communicator' do
   it 'call communicator' do
-    if path_builder_with
-      expect(path_builder)
-        .to receive(path_builder_receive)
-        .with(*path_builder_with)
-        .and_return(path)
-    else
-      expect(path_builder)
-        .to receive(path_builder_receive)
-        .and_return(path)
-    end
 
     if communicator_with
       expect(communicator)

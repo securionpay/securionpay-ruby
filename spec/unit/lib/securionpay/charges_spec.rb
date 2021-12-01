@@ -5,12 +5,9 @@ describe SecurionPay::Charges do
   let(:charge_id) { 'some_charge_id' }
   let(:params) { double }
   let(:communicator) { double }
-  let(:path_builder) { double }
   let(:response) { double }
   let(:path) { double }
   let(:sub_transaction) { nil }
-  let(:path_builder_receive) { :build_charges_path }
-  let(:path_builder_with) { [customer_id, card_id] }
   let(:subject_send_with) { [customer_id, card_id] }
   let(:communicator_with) { nil }
 
@@ -20,13 +17,11 @@ describe SecurionPay::Charges do
 
   before do 
     subject.communicator = communicator
-    subject.path_builder = path_builder
   end
 
   describe '.create' do
     let(:http_method) { :post }
     let(:method) { :create }
-    let(:path_builder_with) { nil }
     let(:subject_send_with) { params }
     let(:communicator_with) { params }
     it_behaves_like 'call_communicator'
@@ -35,7 +30,6 @@ describe SecurionPay::Charges do
   describe '.retrieve' do
     let(:http_method) { :get }
     let(:method) { :retrieve }
-    let(:path_builder_with) { charge_id }
     let(:subject_send_with) { charge_id }
     let(:communicator_with) { nil }
     it_behaves_like 'call_communicator'
@@ -44,7 +38,6 @@ describe SecurionPay::Charges do
   describe '.update' do
     let(:http_method) { :post }
     let(:method) { :update }
-    let(:path_builder_with) { charge_id }
     let(:subject_send_with) { [charge_id, params] }
     let(:communicator_with) { params }
     it_behaves_like 'call_communicator'
@@ -53,7 +46,6 @@ describe SecurionPay::Charges do
   describe '.list' do
     let(:http_method) { :get }
     let(:method) { :list }
-    let(:path_builder_with) { nil }
     let(:subject_send_with) { nil }
     let(:communicator_with) { nil }
     it_behaves_like 'call_communicator'
@@ -62,7 +54,6 @@ describe SecurionPay::Charges do
   describe '.capture' do
     let(:http_method) { :post }
     let(:method) { :capture }
-    let(:path_builder_with) { [charge_id, :capture] }
     let(:subject_send_with) { charge_id }
     let(:communicator_with) { nil }
     it_behaves_like 'call_communicator'
@@ -71,7 +62,6 @@ describe SecurionPay::Charges do
   describe '.refund' do
     let(:http_method) { :post }
     let(:method) { :refund }
-    let(:path_builder_with) { [charge_id, :refund] }
     let(:subject_send_with) { [charge_id, params] }
     let(:communicator_with) { params }
     it_behaves_like 'call_communicator'
@@ -79,7 +69,6 @@ describe SecurionPay::Charges do
     context 'params is nil' do
       let(:http_method) { :post }
       let(:method) { :refund }
-      let(:path_builder_with) { [charge_id, :refund] }
       let(:subject_send_with) { charge_id }
       let(:communicator_with) { [ nil ] }
       it_behaves_like 'call_communicator'
