@@ -1,5 +1,4 @@
 require 'simplecov'
-require_relative 'support/shared_examples'
 require_relative 'support/random_data'
 
 SimpleCov.start

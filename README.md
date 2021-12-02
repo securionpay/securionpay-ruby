@@ -37,12 +37,6 @@ Integration tests:
 $ SECRET_KEY='pr_test_id' bundle exec rake spec:integration
 ```
 
-Mutation tests:
-
-```bash
-$ SPEC_OPTS="--pattern spec/unit/**/*_spec.rb" bundle exec mutant --include lib --require securionpay --use rspec SecurionPay*
-```
-
 ## Usage
 
 Configuration:
