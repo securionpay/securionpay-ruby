@@ -1,5 +1,6 @@
 require 'securionpay/transaction_base'
 require 'securionpay/version'
+require 'securionpay/securion_pay_exception'
 
 require 'securionpay/blacklist'
 require 'securionpay/cards'
