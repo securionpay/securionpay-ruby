@@ -6,5 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
+/.idea
 /spec/integration.rb
 /*.iml
