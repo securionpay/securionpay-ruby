@@ -10,3 +10,4 @@
 /.idea
 /spec/integration.rb
 /*.iml
+/.env

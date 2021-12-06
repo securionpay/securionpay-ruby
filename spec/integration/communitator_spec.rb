@@ -1,9 +1,7 @@
-require 'spec_helper'
+require_relative '../spec_helper'
 
 describe SecurionPay::Communicator do
-  before do
-    SecurionPay::Configuration.secret_key = ENV['SECRET_KEY']
-  end
+  include_context 'common'
 
   it 'should throw on bad secret key' do
     SecurionPay::Configuration.secret_key = "sk_not_existing_key"
