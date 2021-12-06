@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'securionpay/transaction_base'
 require 'securionpay/version'
 require 'securionpay/securion_pay_exception'

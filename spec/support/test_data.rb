@@ -1,5 +1,6 @@
-class TestData
+# frozen_string_literal: true
 
+class TestData
   def self.card
     {
       'number' => '4242424242424242',
@@ -89,19 +90,13 @@ class TestData
     amount: 1000,
     currency: 'EUR',
     interval: 'month',
-    name: 'Plan: ' + random_string
+    name: "Plan: #{random_string}"
   )
     {
       'amount' => amount,
       'currency' => currency,
       'interval' => interval,
       'name' => name,
-    }.compact
-  end
-
-  def self.subscription(planId: nil)
-    {
-      "planId" => planId
     }.compact
   end
 end

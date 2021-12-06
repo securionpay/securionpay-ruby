@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 
 module SecurionPay
@@ -11,19 +13,19 @@ module SecurionPay
     def self.get(path, params = nil)
       response = web_consumer.get(url(path), request(nil, params))
       handle_response(response)
-      return response
+      response
     end
 
     def self.post(path, body = nil)
       response = web_consumer.post(url(path), request(body))
       handle_response(response)
-      return response
+      response
     end
 
     def self.delete(path)
       response = web_consumer.delete(url(path), request)
       handle_response(response)
-      return response
+      response
     end
 
     def self.url(path)
@@ -31,9 +33,7 @@ module SecurionPay
     end
 
     def self.request(body = nil, query = nil)
-      if body != nil
-        body = body.to_json
-      end
+      body = body.to_json unless body.nil?
       {
         body: body,
         query: query,
@@ -48,9 +48,7 @@ module SecurionPay
     end
 
     def self.handle_response(response)
-      if (400..599).include?(response.code)
-        raise SecurionPayException.new(response)
-      end
+      raise SecurionPayException, response if (400..599).cover?(response.code)
     end
 
     private_class_method :url, :request, :handle_response

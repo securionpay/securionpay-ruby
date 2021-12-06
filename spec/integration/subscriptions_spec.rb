@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Subscriptions do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve subscription' do
     # given
@@ -24,17 +26,18 @@ describe SecurionPay::Subscriptions do
     customer = SecurionPay::Customers.create(TestData.customer(card: TestData.card))
     subscription = SecurionPay::Subscriptions.create(customerId: customer['id'], planId: plan['id'])
     # when
-    SecurionPay::Subscriptions.update(subscription['id'], shipping: {
-      name: 'Updated shipping',
-      address: {
-        "line1" => "Updated line1",
-        "line2" => "Updated line2",
-        "zip" => "Updated zip",
-        "city" => "Updated city",
-        "state" => "Updated state",
-        "country" => "CH",
-      }.compact,
-    })
+    SecurionPay::Subscriptions.update(subscription['id'],
+                                      shipping: {
+                                        name: 'Updated shipping',
+                                        address: {
+                                          "line1" => "Updated line1",
+                                          "line2" => "Updated line2",
+                                          "zip" => "Updated zip",
+                                          "city" => "Updated city",
+                                          "state" => "Updated state",
+                                          "country" => "CH",
+                                        }.compact,
+                                      })
     retrieved = SecurionPay::Subscriptions.retrieve(subscription['id'])
 
     # then
@@ -65,7 +68,7 @@ describe SecurionPay::Subscriptions do
     # then
     expect(subscription['status']).to eq('active')
     expect(canceled['status']).to eq('canceled')
-    expect(canceled['canceledAt']).to_not be_nil
+    expect(canceled['canceledAt']).not_to be_nil
   end
 
   it 'list subscription' do
@@ -87,5 +90,4 @@ describe SecurionPay::Subscriptions do
     expect(deleted['list'].map { |it| it['id'] })
       .to contain_exactly(canceled_subscription['id'])
   end
-
 end

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Cards do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve card' do
     # given
@@ -10,16 +12,15 @@ describe SecurionPay::Cards do
     cardholder_name = random_string
 
     # when
-    created = SecurionPay::Cards.create(customer_id, {
-      number: '4242424242424242',
-      expMonth: '12',
-      expYear: '2055',
-      cvc: '123',
-      cardholderName: cardholder_name
-    })
+    created = SecurionPay::Cards.create(customer_id,
+                                        number: '4242424242424242',
+                                        expMonth: '12',
+                                        expYear: '2055',
+                                        cvc: '123',
+                                        cardholderName: cardholder_name)
     retrieved = SecurionPay::Cards.retrieve(customer_id, created['id'])
 
-    #then
+    # then
     expect(retrieved['last4']).to eq('4242')
     expect(retrieved['expMonth']).to eq('12')
     expect(retrieved['expYear']).to eq('2055')
@@ -33,17 +34,16 @@ describe SecurionPay::Cards do
     card = SecurionPay::Cards.create(customer['id'], TestData.card)
 
     # when
-    updated_card = SecurionPay::Cards.update(customer['id'], card['id'], {
-      expMonth: '05',
-      expYear: '55',
-      cardholderName: 'updated cardholderName',
-      addressCountry: 'updated addressCountry',
-      addressCity: 'updated addressCity',
-      addressState: 'updated addressState',
-      addressZip: 'updated addressZip',
-      addressLine1: 'updated addressLine1',
-      addressLine2: 'updated addressLine2',
-    })
+    updated_card = SecurionPay::Cards.update(customer['id'], card['id'],
+                                             expMonth: '05',
+                                             expYear: '55',
+                                             cardholderName: 'updated cardholderName',
+                                             addressCountry: 'updated addressCountry',
+                                             addressCity: 'updated addressCity',
+                                             addressState: 'updated addressState',
+                                             addressZip: 'updated addressZip',
+                                             addressLine1: 'updated addressLine1',
+                                             addressLine2: 'updated addressLine2')
 
     # then
     expect(updated_card['expMonth']).to eq('05')
@@ -71,7 +71,7 @@ describe SecurionPay::Cards do
   end
 
   it 'list cards' do
-    #given
+    # given
     customer1 = SecurionPay::Customers.create(TestData.customer)
     customer2 = SecurionPay::Customers.create(TestData.customer)
     card11 = SecurionPay::Cards.create(customer1['id'], TestData.card)

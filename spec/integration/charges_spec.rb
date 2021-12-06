@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Charges do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve charge' do
     # given
@@ -25,10 +27,9 @@ describe SecurionPay::Charges do
 
     # when
     created = SecurionPay::Charges.create(charge_req)
-    updated = SecurionPay::Charges.update(created['id'], {
-      "description" => "updated description",
-      "metadata" => { "key" => "updated value" },
-    })
+    updated = SecurionPay::Charges.update(created['id'],
+                                          "description" => "updated description",
+                                          "metadata" => { "key" => "updated value" })
 
     # then
     expect(created['description']).to eq(charge_req["description"])

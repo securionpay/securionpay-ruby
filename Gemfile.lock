@@ -57,6 +57,10 @@ GEM
     rubocop-performance (1.12.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
+    rubocop-rake (0.5.1)
+      rubocop
+    rubocop-rspec (2.6.0)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     simplecov (0.21.2)
       docile (~> 1.1)
@@ -77,6 +81,8 @@ DEPENDENCIES
   rake (~> 13.0)
   rspec (~> 3.10)
   rubocop-performance (~> 1.12)
+  rubocop-rake (~> 0.5.1)
+  rubocop-rspec (~> 2.6)
   securionpay!
   simplecov (~> 0.21)
   waitutil (~> 0.2.1)

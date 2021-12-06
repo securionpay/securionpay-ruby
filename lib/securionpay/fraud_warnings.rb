@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SecurionPay
   class FraudWarnings
     extend TransactionBase

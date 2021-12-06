@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Credits do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve credit' do
     # given
@@ -25,10 +27,9 @@ describe SecurionPay::Credits do
 
     # when
     created = SecurionPay::Credits.create(credit_req)
-    updated = SecurionPay::Credits.update(created['id'], {
-      "description" => "updated description",
-      "metadata" => { "key" => "updated value" },
-    })
+    updated = SecurionPay::Credits.update(created['id'],
+                                          "description" => "updated description",
+                                          "metadata" => { "key" => "updated value" })
 
     # then
     expect(created['description']).to eq(credit_req["description"])

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Customers do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve customer' do
     # given
@@ -12,7 +14,7 @@ describe SecurionPay::Customers do
     retrieved = SecurionPay::Customers.retrieve(created['id'])
 
     # then
-    expect(retrieved['id']).to_not be_nil
+    expect(retrieved['id']).not_to be_nil
     expect(retrieved['email']).to eq(customer_req['email'])
   end
 
@@ -27,7 +29,7 @@ describe SecurionPay::Customers do
     updated = SecurionPay::Customers.retrieve(customer['id'])
 
     # then
-    expect(updated['id']).to_not be_nil
+    expect(updated['id']).not_to be_nil
     expect(updated['defaultCardId']).to eq(new_card['id'])
   end
 
@@ -41,7 +43,7 @@ describe SecurionPay::Customers do
     updated = SecurionPay::Customers.retrieve(customer['id'])
 
     # then
-    expect(updated['id']).to_not be_nil
+    expect(updated['id']).not_to be_nil
     expect(updated['deleted']).to eq(true)
   end
 

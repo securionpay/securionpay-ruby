@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Plans do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve plan' do
     # given
@@ -67,5 +69,4 @@ describe SecurionPay::Plans do
     expect(deleted['list'].map { |it| it['id'] })
       .to include(deleted_plan['id'])
   end
-
 end

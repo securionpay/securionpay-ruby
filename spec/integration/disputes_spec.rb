@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Disputes do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'retrieve dispute' do
     # given
@@ -16,7 +18,7 @@ describe SecurionPay::Disputes do
 
   it 'list disputes' do
     # given
-    dispute, _ = create_dispute
+    dispute, = create_dispute
 
     # when
     disputes = SecurionPay::Disputes.list(limit: 100)
@@ -28,7 +30,7 @@ describe SecurionPay::Disputes do
 
   it 'update dispute' do
     # given
-    dispute, _ = create_dispute
+    dispute, = create_dispute
     evidence_customer_name = 'Test Customer'
 
     # when
@@ -41,7 +43,7 @@ describe SecurionPay::Disputes do
 
   it 'close dispute' do
     # given
-    dispute, _ = create_dispute
+    dispute, = create_dispute
 
     # when
     SecurionPay::Disputes.close(dispute['id'])
@@ -50,15 +52,14 @@ describe SecurionPay::Disputes do
     # then
     expect(retrieved['acceptedAsLost']).to eq(true)
   end
-
 end
 
 def create_dispute
   charge = SecurionPay::Charges.create(TestData.charge(card: TestData.disputed_card))
-  WaitUtil.wait_for_condition("disputed", :timeout_sec => 30) {
+  WaitUtil.wait_for_condition("disputed", timeout_sec: 30) do
     SecurionPay::Charges.retrieve(charge['id'])
                         .fetch('disputed', false)
-  }
+  end
   disputes = SecurionPay::Disputes.list(limit: 100)
   dispute = disputes['list'].find { |it| it['charge']['id'] == charge['id'] }
   [dispute, charge]

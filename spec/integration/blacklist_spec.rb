@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::Blacklist do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve blacklist' do
     # given
@@ -43,12 +45,11 @@ describe SecurionPay::Blacklist do
     all_with_deleted = SecurionPay::Blacklist.list(deleted: true, limit: 100)
 
     # then
-    expect(all_default['list'].map { |it| it['id'] }).
-      to include(created1['id'], created2['id']).
-        and not_include(deleted['id'])
-    expect(all_with_deleted['list'].map { |it| it['id'] }).
-      to include(deleted['id']).
-        and not_include(created1['id'], created2['id'])
-
+    expect(all_default['list'].map { |it| it['id'] })
+      .to include(created1['id'], created2['id'])
+      .and not_include(deleted['id'])
+    expect(all_with_deleted['list'].map { |it| it['id'] })
+      .to include(deleted['id'])
+      .and not_include(created1['id'], created2['id'])
   end
 end

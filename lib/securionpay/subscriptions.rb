@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SecurionPay
   class Subscriptions
     extend TransactionBase

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require_relative '../spec_helper'
 
 describe SecurionPay::CrossSaleOffers do
-  include_context 'common'
+  include_context 'with test config'
 
   it 'create and retrieve cross sale offer' do
     # given
@@ -12,7 +14,7 @@ describe SecurionPay::CrossSaleOffers do
     retrieved = SecurionPay::CrossSaleOffers.retrieve(created['id'])
 
     # then
-    expect(retrieved['id']).to_not be_nil
+    expect(retrieved['id']).not_to be_nil
     expect(retrieved['description']).to eq(offer_req['description'])
     expect(retrieved['title']).to eq(offer_req['title'])
     expect(retrieved['termsAndConditionsUrl']).to eq(offer_req['termsAndConditionsUrl'])
@@ -37,7 +39,6 @@ describe SecurionPay::CrossSaleOffers do
     expect(updated['description']).to eq('updated description')
 
     expect(updated['charge']['amount']).to eq(offer_req['charge']['amount'])
-
   end
 
   it 'delete cross sale offer' do
