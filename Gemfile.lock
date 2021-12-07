@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    securionpay (0.3.0)
+    securionpay (1.0.0)
       httparty (~> 0.20)
 
 GEM
