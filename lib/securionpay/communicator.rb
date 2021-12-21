@@ -10,37 +10,40 @@ module SecurionPay
 
     @web_consumer = HTTParty
 
-    def self.get(path, params = nil)
-      response = web_consumer.get(url(path), request(nil, params))
+    def self.get(url, query: nil)
+      response = web_consumer.get(url, request(query: query))
       handle_response(response)
       response
     end
 
-    def self.post(path, body = nil)
-      response = web_consumer.post(url(path), request(body))
+    def self.post(url, json: nil, body: nil)
+      response = web_consumer.post(url, request(json: json, body: body))
       handle_response(response)
       response
     end
 
-    def self.delete(path)
-      response = web_consumer.delete(url(path), request)
+    def self.delete(url)
+      response = web_consumer.delete(url, request)
       handle_response(response)
       response
     end
 
-    def self.url(path)
-      "#{Configuration.service_url}#{path}"
-    end
+    def self.request(json: nil, query: nil, body: nil)
+      headers = {
+        "User-Agent" => "SecurionPay-Ruby/#{SecurionPay::VERSION} (Ruby/#{RUBY_VERSION})",
+        "Accept" => "application/json",
+      }
+      if json
+        raise ArgumentError("Cannot specify both body and json") if body
 
-    def self.request(body = nil, query = nil)
-      body = body.to_json unless body.nil?
+        body = json.to_json
+        headers["Content-Type"] = "application/json"
+      end
+
       {
         body: body,
         query: query,
-        headers: {
-          "User-Agent" => "SecurionPay-Ruby/#{SecurionPay::VERSION} (Ruby/#{RUBY_VERSION})",
-          "Content-Type" => "application/json",
-        },
+        headers: headers,
         basic_auth: {
           username: Configuration.secret_key
         }
@@ -51,6 +54,6 @@ module SecurionPay
       raise SecurionPayException, response if (400..599).cover?(response.code)
     end
 
-    private_class_method :url, :request, :handle_response
+    private_class_method :request, :handle_response
   end
 end

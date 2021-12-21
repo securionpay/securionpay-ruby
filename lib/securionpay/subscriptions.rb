@@ -5,23 +5,23 @@ module SecurionPay
     extend TransactionBase
 
     def self.create(params)
-      communicator.post("/subscriptions", params)
+      communicator.post("#{Configuration.service_url}/subscriptions", json: params)
     end
 
     def self.retrieve(subscription_id)
-      communicator.get("/subscriptions/#{subscription_id}")
+      communicator.get("#{Configuration.service_url}/subscriptions/#{subscription_id}")
     end
 
     def self.update(subscription_id, params)
-      communicator.post("/subscriptions/#{subscription_id}", params)
+      communicator.post("#{Configuration.service_url}/subscriptions/#{subscription_id}", json: params)
     end
 
     def self.cancel(subscription_id)
-      communicator.delete("/subscriptions/#{subscription_id}")
+      communicator.delete("#{Configuration.service_url}/subscriptions/#{subscription_id}")
     end
 
     def self.list(params = nil)
-      communicator.get("/subscriptions", params)
+      communicator.get("#{Configuration.service_url}/subscriptions", query: params)
     end
   end
 end

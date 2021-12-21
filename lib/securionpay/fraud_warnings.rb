@@ -5,11 +5,11 @@ module SecurionPay
     extend TransactionBase
 
     def self.retrieve(fraud_warning_id)
-      communicator.get("/fraud-warnings/#{fraud_warning_id}")
+      communicator.get("#{Configuration.service_url}/fraud-warnings/#{fraud_warning_id}")
     end
 
     def self.list(params = nil)
-      communicator.get("/fraud-warnings", params)
+      communicator.get("#{Configuration.service_url}/fraud-warnings", query: params)
     end
   end
 end

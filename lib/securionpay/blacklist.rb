@@ -6,19 +6,19 @@ module SecurionPay
     extend TransactionBase
 
     def self.create(params)
-      communicator.post("/blacklist", params)
+      communicator.post("#{Configuration.service_url}/blacklist", json: params)
     end
 
     def self.retrieve(blacklist_rule_id)
-      communicator.get("/blacklist/#{blacklist_rule_id}")
+      communicator.get("#{Configuration.service_url}/blacklist/#{blacklist_rule_id}")
     end
 
     def self.delete(blacklist_rule_id)
-      communicator.delete("/blacklist/#{blacklist_rule_id}")
+      communicator.delete("#{Configuration.service_url}/blacklist/#{blacklist_rule_id}")
     end
 
     def self.list(params = nil)
-      communicator.get("/blacklist", params)
+      communicator.get("#{Configuration.service_url}/blacklist", query: params)
     end
   end
 end

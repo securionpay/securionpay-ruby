@@ -5,19 +5,19 @@ module SecurionPay
     extend TransactionBase
 
     def self.create(params)
-      communicator.post("/credits", params)
+      communicator.post("#{Configuration.service_url}/credits", json: params)
     end
 
     def self.retrieve(credit_id)
-      communicator.get("/credits/#{credit_id}")
+      communicator.get("#{Configuration.service_url}/credits/#{credit_id}")
     end
 
     def self.update(credit_id, params)
-      communicator.post("/credits/#{credit_id}", params)
+      communicator.post("#{Configuration.service_url}/credits/#{credit_id}", json: params)
     end
 
     def self.list(params = nil)
-      communicator.get("/credits", params)
+      communicator.get("#{Configuration.service_url}/credits", query: params)
     end
   end
 end

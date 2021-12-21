@@ -8,5 +8,9 @@ module  SecurionPay
       super(response)
       @response = response
     end
+
+    def [](key)
+      response[key]
+    end
   end
 end
