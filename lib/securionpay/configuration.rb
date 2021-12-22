@@ -4,18 +4,18 @@ module SecurionPay
   class Configuration
     class << self
       attr_accessor :secret_key
-      attr_reader :service_url, :uploads_url
+      attr_reader :api_url, :uploads_url
     end
 
-    @service_url = 'https://api.securionpay.com'
+    @api_url = 'https://api.securionpay.com'
     @uploads_url = 'https://uploads.securionpay.com'
 
-    def self.service_url=(service_url)
-      @service_url = if service_url.nil?
-                       'https://api.securionpay.com'
-                     else
-                       service_url.gsub(%r{/$}, "")
-                     end
+    def self.api_url=(api_url)
+      @api_url = if api_url.nil?
+                   'https://api.securionpay.com'
+                 else
+                   api_url.gsub(%r{/$}, "")
+                 end
     end
 
     def self.uploads_url=(uploads_url)

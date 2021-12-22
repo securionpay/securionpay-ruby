@@ -48,7 +48,7 @@ SecurionPay::Configuration.secret_key = 'pr_test_id'
 If you want connect to different backend:
 
 ```ruby
-SecurionPay::Configuration.service_url = 'https://api.chuck.norris.com'
+SecurionPay::Configuration.api_url = 'https://api.chuck.norris.com'
 ```
 
 ### Create a new Card

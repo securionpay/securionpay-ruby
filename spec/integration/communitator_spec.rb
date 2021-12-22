@@ -5,7 +5,7 @@ require_relative '../spec_helper'
 describe SecurionPay::Communicator do
   include_context 'with test config'
 
-  let(:url) { SecurionPay::Configuration.service_url }
+  let(:url) { SecurionPay::Configuration.api_url }
 
   it 'throw on bad secret key' do
     SecurionPay::Configuration.secret_key = "sk_not_existing_key"
