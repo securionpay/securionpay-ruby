@@ -1,0 +1,91 @@
+PATH
+  remote: .
+  specs:
+    securionpay (1.0.0)
+      httparty (~> 0.20)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ast (2.4.2)
+    coderay (1.1.3)
+    diff-lcs (1.4.4)
+    docile (1.4.0)
+    dotenv (2.7.6)
+    httparty (0.20.0)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
+    method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2021.1115)
+    multi_xml (0.6.0)
+    parallel (1.21.0)
+    parser (3.0.3.1)
+      ast (~> 2.4.1)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    rainbow (3.0.0)
+    rake (13.0.6)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.1)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.3)
+    rubocop (1.23.0)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.12.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.13.0)
+      parser (>= 3.0.1.1)
+    rubocop-performance (1.12.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rake (0.5.1)
+      rubocop
+    rubocop-rspec (2.6.0)
+      rubocop (~> 1.19)
+    ruby-progressbar (1.11.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.3)
+    unicode-display_width (2.1.0)
+    waitutil (0.2.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 2.2)
+  dotenv (~> 2.1)
+  pry (~> 0.14)
+  rake (~> 13.0)
+  rspec (~> 3.10)
+  rubocop-performance (~> 1.12)
+  rubocop-rake (~> 0.5.1)
+  rubocop-rspec (~> 2.6)
+  securionpay!
+  simplecov (~> 0.21)
+  waitutil (~> 0.2.1)
+
+BUNDLED WITH
+   2.2.26

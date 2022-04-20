@@ -1,44 +1,31 @@
+# frozen_string_literal: true
+
 module SecurionPay
   class Charges
     extend TransactionBase
 
     def self.create(params)
-      communicator.post(
-        path_builder.build_charges_path,
-        params
-      )
+      communicator.post("#{Configuration.api_url}/charges", json: params)
     end
 
     def self.retrieve(charge_id)
-      communicator.get(
-        path_builder.build_charges_path(charge_id)
-      )
+      communicator.get("#{Configuration.api_url}/charges/#{charge_id}")
     end
 
     def self.update(charge_id, params)
-      communicator.post(
-        path_builder.build_charges_path(charge_id),
-        params
-      )
+      communicator.post("#{Configuration.api_url}/charges/#{charge_id}", json: params)
     end
 
-    def self.list
-      communicator.get(
-        path_builder.build_charges_path
-      )
+    def self.list(params = nil)
+      communicator.get("#{Configuration.api_url}/charges", query: params)
     end
 
     def self.capture(charge_id)
-      communicator.post(
-        path_builder.build_charges_path(charge_id, :capture)
-      )
+      communicator.post("#{Configuration.api_url}/charges/#{charge_id}/capture")
     end
 
     def self.refund(charge_id, params = nil)
-      communicator.post(
-        path_builder.build_charges_path(charge_id, :refund),
-        params
-      )
+      communicator.post("#{Configuration.api_url}/charges/#{charge_id}/refund", json: params)
     end
   end
 end

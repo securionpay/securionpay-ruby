@@ -1,28 +1,33 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'securionpay/version'
+# frozen_string_literal: true
+
+require_relative 'lib/securionpay/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "securionpay"
-  spec.version       = SecurionPay::VERSION
-  spec.authors       = ["Grzegorz Wilczynski"]
-  spec.email         = ["support@securionpay.com"]
+  spec.name = "securionpay"
+  spec.version = SecurionPay::VERSION
+  spec.authors = ["Grzegorz Wilczynski"]
+  spec.email = ["support@securionpay.com"]
+  spec.required_ruby_version = '>= 2.6'
 
-  spec.summary       = "SecurionPay ruby gem"
-  spec.description   = "SecurionPay ruby gem"
-  spec.homepage      = "https://securionpay.com"
+  spec.summary = "SecurionPay ruby gem"
+  spec.description = "SecurionPay ruby gem"
+  spec.homepage = "https://securionpay.com"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files = Dir['lib/**/*.rb'] + Dir['bin/*']
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'httparty', '~> 0.13'
-  spec.add_development_dependency 'bundler', '~> 1.11'
-  spec.add_development_dependency "rake", "~> 11.1"
-  spec.add_development_dependency "mutant-rspec", "~> 0.8"
-  spec.add_development_dependency "rspec", "~> 3.4"
-  spec.add_development_dependency "pry", "~> 0.10"
-  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.5"
+  spec.add_dependency 'httparty', '~> 0.20'
+
+  spec.add_development_dependency 'bundler', '~> 2.2'
+  spec.add_development_dependency "dotenv", "~> 2.1"
+  spec.add_development_dependency "pry", "~> 0.14"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "rubocop-performance", "~> 1.12"
+  spec.add_development_dependency 'rubocop-rake', '~> 0.5.1'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.6'
+  spec.add_development_dependency "simplecov", "~> 0.21"
+  spec.add_development_dependency "waitutil", "~> 0.2.1"
 end

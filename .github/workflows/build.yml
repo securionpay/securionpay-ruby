@@ -1,0 +1,38 @@
+name: Build and validate
+on: [ push, pull_request ]
+
+jobs:
+
+  integration-tests:
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+    name: Integration Tests
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest ]
+        ruby: [ 2.6, 2.7, 3.0 ]
+        include:
+          - os: macos-latest
+            ruby: 2.6
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run integration tests
+        run: bundle exec rake spec:integration
+
+  rubocop:
+    name: Style check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true
+      - name: Run style checks
+        run: bundle exec rubocop

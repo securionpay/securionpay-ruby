@@ -1,10 +1,13 @@
 /.bundle/
 /.yardoc
-/Gemfile.lock
 /_yardoc/
 /coverage/
 /doc/
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
+/.idea
 /spec/integration.rb
+/*.iml
+/.env
