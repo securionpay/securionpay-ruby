@@ -5,12 +5,13 @@ require_relative 'lib/securionpay/version'
 Gem::Specification.new do |spec|
   spec.name = "securionpay"
   spec.version = SecurionPay::VERSION
-  spec.authors = ["Grzegorz Wilczynski"]
+  spec.authors = ["SecurionPay Team"]
   spec.email = ["support@securionpay.com"]
   spec.required_ruby_version = '>= 2.6'
+  spec.licenses = ['MIT']
 
   spec.summary = "SecurionPay ruby gem"
-  spec.description = "SecurionPay ruby gem"
+  spec.description = "Ruby gem simplifying integration with SecurionPay API"
   spec.homepage = "https://securionpay.com"
 
   spec.files = Dir['lib/**/*.rb'] + Dir['bin/*']
