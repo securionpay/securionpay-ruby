@@ -1,3 +1,9 @@
+Deprecation
+===================================
+
+This library is deprecated. Please use [Shift4 ruby gem](https://github.com/shift4developer/shift4-ruby).
+
+
 SecurionPay ruby gem
 ====================
 
